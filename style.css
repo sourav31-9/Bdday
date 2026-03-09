@@ -1,0 +1,250 @@
+/* --- Global Styles & Setup --- */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;700&family=Great+Vibes&display=swap');
+
+:root {
+--bg-dark: #1a1a2e;
+--bg-light: #0f3460;
+--primary-red: #e94560;
+--accent-yellow: #f0e68c;
+--text-light: #ffffff;
+--envelope-body: #f7f3e9;
+--envelope-flap: #e0d9cc;
+--letter-paper: #fffaf0;
+--button-hover: #c73049;
+--cake-bottom: #553c13;
+--cake-middle: #7a522f;
+--cake-top: #9c6e4e;
+--flame-color: orange;
+--shadow-light: rgba(0,0,0,0.2);
+--shadow-medium: rgba(0,0,0,0.3);
+--shadow-heavy: rgba(0,0,0,0.5);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
+
+body {
+font-family: 'Poppins', sans-serif;
+background: linear-gradient(45deg, var(--bg-dark), var(--bg-light));
+color: var(--text-light);
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+overflow: hidden;
+perspective: 1000px;
+}
+
+.step {
+display: none;
+justify-content: center;
+align-items: center;
+width: 100%;
+height: 100%;
+position: absolute;
+top: 0;
+left: 0;
+transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.step.active {
+display: flex;
+opacity: 1;
+transform: scale(1);
+}
+
+.step:not(.active) {
+opacity: 0;
+transform: scale(0.95);
+pointer-events: none;
+}
+
+.action-button {
+padding: 12px 25px;
+background-color: var(--primary-red);
+color: var(--text-light);
+border: none;
+border-radius: 30px;
+font-size: 1.1rem;
+font-weight: 700;
+cursor: pointer;
+transition: background-color 0.3s ease, transform 0.2s ease;
+box-shadow: 0 4px 10px var(--shadow-medium);
+}
+
+.action-button:hover {
+background-color: var(--button-hover);
+transform: translateY(-2px);
+}
+
+/* --- Welcome Screen --- */
+
+.welcome-card {
+text-align: center;
+padding: 40px;
+background: rgba(255,255,255,0.1);
+border-radius: 20px;
+}
+
+.welcome-title {
+font-family: 'Great Vibes', cursive;
+font-size: 3.5rem;
+color: var(--accent-yellow);
+}
+
+.welcome-message {
+font-size: 1.2rem;
+margin: 20px 0;
+}
+
+/* --- Envelope --- */
+
+.envelope-container {
+text-align: center;
+cursor: pointer;
+}
+
+.envelope {
+position: relative;
+width: 320px;
+height: 200px;
+}
+
+.envelope-back {
+position: absolute;
+width: 100%;
+height: 100%;
+background-color: var(--envelope-body);
+}
+
+.envelope-flap {
+position: absolute;
+width: 100%;
+height: 100px;
+background-color: var(--envelope-flap);
+clip-path: polygon(0 0, 100% 0, 50% 100%);
+transform-origin: top;
+transition: transform 0.5s ease;
+}
+
+.envelope-container.open .envelope-flap {
+transform: rotateX(180deg);
+}
+
+/* --- Letter --- */
+
+.letter {
+width: 400px;
+background: var(--letter-paper);
+color: #000;
+padding: 30px;
+border-radius: 10px;
+}
+
+.letter p {
+margin-bottom: 15px;
+}
+
+/* --- Celebration --- */
+
+.celebration-card {
+text-align: center;
+padding: 30px;
+background: rgba(255,255,255,0.15);
+border-radius: 20px;
+}
+
+.main-greeting {
+font-size: 2.8rem;
+font-weight: 700;
+}
+
+.recipient-name {
+font-family: 'Pacifico', cursive;
+font-size: 4.5rem;
+color: var(--accent-yellow);
+}
+
+.final-wish {
+margin-top: 20px;
+}
+
+/* --- Cake --- */
+
+.cake {
+position: relative;
+width: 250px;
+height: 200px;
+margin: 20px auto;
+}
+
+.layer {
+position: absolute;
+width: 100%;
+height: 50px;
+border-radius: 50%;
+}
+
+.layer-bottom {
+bottom: 0;
+background: var(--cake-bottom);
+}
+
+.layer-middle {
+bottom: 40px;
+background: var(--cake-middle);
+}
+
+.layer-top {
+bottom: 80px;
+background: var(--cake-top);
+}
+
+.candle {
+position: absolute;
+width: 10px;
+height: 50px;
+background: var(--primary-red);
+bottom: 120px;
+left: 50%;
+transform: translateX(-50%);
+}
+
+.flame {
+width: 10px;
+height: 15px;
+background: var(--flame-color);
+border-radius: 50%;
+position: absolute;
+top: -15px;
+}
+
+/* --- Responsive --- */
+
+@media (max-width: 768px) {
+.recipient-name { font-size: 3rem; }
+.main-greeting { font-size: 2rem; }
+}
+.photo-gallery{
+display:flex;
+justify-content:center;
+gap:15px;
+margin-top:20px;
+flex-wrap:wrap;
+}
+
+.photo{
+width:120px;
+height:120px;
+object-fit:cover;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+transition:transform 0.3s;
+}
+
+.photo:hover{
+transform:scale(1.1);
+}
